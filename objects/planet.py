@@ -1,8 +1,6 @@
 from math import dist
 from random import randint
 
-from scipy.constants import gravitational_constant
-
 import pygame
 
 
@@ -25,7 +23,7 @@ class Planet:
 
         self.affected = affected
 
-        self.col = (randint(100,255), randint(100,255), randint(100,255),)
+        self.col = (randint(100, 255), randint(100, 255), randint(100, 255))
         self.radius = radius
 
         self.trail = []
@@ -63,7 +61,8 @@ class Planet:
         if self.affected:
             for planet in self.settings.planets:
                 if planet != self:
-                    g_force = (gravitational_constant * planet.mass * self.mass) / (dist(planet.pos, self.pos) ** 2)
+                    # 6.6743e-11 is the Newtonian constant of gravitation
+                    g_force = (6.6743e-11 * planet.mass * self.mass) / (dist(planet.pos, self.pos) ** 2)
 
                     self.velocity += (planet.pos - self.pos) * (g_force / self.mass)
 

@@ -52,12 +52,16 @@ class Settings:
         this function clears and re-draws all planets on the map
         """
         self.planets.clear()
+
+        # creates a planet in the center of the screen
         self.planets.append(objects.Planet(self,
                                            self.SCREEN_SIZE / 2,
                                            1_000_000_000,
                                            15,
-                                           pygame.Vector2(0, 0))
+                                           pygame.Vector2(0, 0),
+                                           False)
                             )
+        # randomly creates and places 10 planets
         self.randomly_place_planets(10)
 
     def randomly_place_planets(self, num: int) -> None:
