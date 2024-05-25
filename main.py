@@ -17,20 +17,22 @@ class Game:
             if event.type == pygame.KEYDOWN:
                 self.settings.toggle_controls(event)
 
-    def update(self):
+        self.settings.controls()
 
+    def update(self):
         for planet in self.settings.planets:
             planet.update()
 
+        self.settings.update_clock()
         pygame.display.set_caption(f'{self.settings.clock.get_fps():.1f}')
 
     def draw(self):
         self.settings.screen.fill((30, 30, 30))
+
         for planet in self.settings.planets:
             planet.draw()
 
         self.settings.draw_selected_trail()
-
         pygame.display.update()
 
     def run(self):

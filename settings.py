@@ -13,7 +13,6 @@ class Settings:
         self.SCREEN_SIZE = pygame.Vector2(896, 896)
 
         self.FPS = 60  # float("inf") <- will remove the FPS cap
-
         self.screen = pygame.display.set_mode(self.SCREEN_SIZE)
 
         self.clock = pygame.time.Clock()
@@ -39,7 +38,7 @@ class Settings:
         pygame.quit()
         sys.exit()
 
-    def update_clock(self):
+    def update_clock(self) -> None:
         """
         this function updates the clock and time related variables when called
         :return:
@@ -53,17 +52,15 @@ class Settings:
         this function clears and re-draws all planets on the map
         """
         self.planets.clear()
-
         self.planets.append(objects.Planet(self,
                                            self.SCREEN_SIZE / 2,
                                            1_000_000_000,
                                            15,
                                            pygame.Vector2(0, 0))
                             )
-
         self.randomly_place_planets(10)
 
-    def randomly_place_planets(self, num: int):
+    def randomly_place_planets(self, num: int) -> None:
         """
         this function will randomly place N planets onto the map
         :param num: the number of planets to place

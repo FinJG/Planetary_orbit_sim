@@ -88,8 +88,6 @@ class Planet:
         this function is used to draw the planets 'trail'
         :param colour: the RBG colour of the trail
         """
-        self.display_trail = self.trail[:self.settings.current_time + 1]
-        if len(self.display_trail) > 2:
-            pygame.draw.lines(self.settings.screen, colour, False, self.display_trail, 1)
-
-            pygame.draw.circle(self.settings.screen, colour, self.display_trail[-1], self.radius)
+        if len(self.trail[:self.settings.current_time]) > 2:
+            pygame.draw.lines(self.settings.screen, colour, False, self.trail[:self.settings.current_time], 1)
+            pygame.draw.circle(self.settings.screen, colour, self.trail[-1], self.radius)
