@@ -20,7 +20,7 @@ class Settings:
         self.keys = pygame.key.get_pressed()
 
         self.planets = []
-        self.currently_selected = 1
+        self.currently_selected = 0
 
         self.COR = 0.90
 
@@ -41,7 +41,6 @@ class Settings:
     def update_clock(self) -> None:
         """
         this function updates the clock and time related variables when called
-        :return:
         """
         self.current_time = self.time_passed
         self.time_passed += 1
@@ -93,7 +92,6 @@ class Settings:
     def controls(self) -> None:
         """
         this function updates the controls that can be held down to use
-        :return:
         """
         self.keys = pygame.key.get_pressed()
         self.slow = 1
@@ -142,4 +140,7 @@ class Settings:
             self.running = not self.running
 
     def draw_selected_trail(self):
+        """
+        draws the currently selected trail onto the screen
+        """
         self.planets[self.currently_selected].draw_trail((255, 0, 0))
